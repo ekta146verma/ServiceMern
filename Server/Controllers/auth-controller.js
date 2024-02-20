@@ -10,9 +10,10 @@ const home = async (req,res)=>{
 
 const register = async (req,res)=>{
     try{
+        console.log(req.body)
         res
             .status(200)
-            .send("Welcome to registration page using controller")
+            .json({msg: req.body})
     } catch(error){
         res
             .status(400)
@@ -20,4 +21,18 @@ const register = async (req,res)=>{
     }
 }
 
-module.exports = {home,register}
+const login = async (req,res)=>{
+    try{
+        console.log(req.body)
+        res
+            .status(200)
+            // .send("his is login page")
+            .json({msg: req.body})
+    } catch(error){
+        res
+            .status(400)
+            .send({msg:`Page not working ${error}`})
+    }
+}
+
+module.exports = {home,register,login}

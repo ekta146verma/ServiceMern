@@ -1,14 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const {home,register} = require('../Controllers/auth-controller')
+const {home,register,login} = require('../Controllers/auth-controller')
 
 // router.get('/',(req,res)=>{
 //     res.send("welcome to jessica page using router")
 // }) 
 
 router.route('/').get(home)
-router.route('/register').get(register)
-
+router.route('/register').post(register)
+router.route('/login').post(login)
+ 
 
 // router.route('/').get((req,res)=>{
 //     res
