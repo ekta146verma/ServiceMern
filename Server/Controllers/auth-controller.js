@@ -1,5 +1,5 @@
 const User = require("../Models/user-model")
-const bcrypt = require ("bcryptjs")
+// const bcrypt = require ("bcryptjs")
 
 const home = async (req,res)=>{
     try{
@@ -18,15 +18,13 @@ const register = async (req,res)=>{
         const userExist = await User.findOne({email:email})
         if(userExist){
             return res.status(400).json({msg:"User already exist"})
-        }
+        }        
 
-        const hashPassword = await bcrypt.hash(password,10)
-
-        await User.create({username, password: hashPassword, email, phone})
+        await User.create({username, password, email, phone})
 
         res
             .status(200)
-            .json({username: username, password:hashPassword, email, phone})
+            .json({username, password, email, phone})
     } catch(error){
         res
             .status(400)
