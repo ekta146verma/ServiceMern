@@ -1,0 +1,5 @@
+Bcryptjs => used to secure  user's password
+dotenv => used to secure developers secret data
+nodemon => it automatically reloads the server in every changes
+mongoose => help to work with database
+express => framework helps in communicting b/w frontend and database
