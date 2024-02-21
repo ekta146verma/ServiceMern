@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MONGO_URL = "mongodb+srv://ekta146verma:ServiceMern146@cluster0.k5qtoit.mongodb.net/"
+const MONGO_URL = process.env.MONGODB_URL
 
 //mongoose.connect(MONGO_URL)
 
