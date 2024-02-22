@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config("./Vars/.env")
 const express = require("express");
 const app = express();
 const router = require('./Router/auth-router')
