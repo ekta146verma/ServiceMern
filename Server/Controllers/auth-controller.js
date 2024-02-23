@@ -20,13 +20,13 @@ const register = async (req,res)=>{
             return res.status(400).json({msg:"User already exist"})
         }        
 
-        await User.create({username, password, email, phone})
+        const userCreated = await User.create({username, password, email, phone})
 
         res
             .status(200)
-            .json({username, password, email, phone})
+            .json({msg: "Registration Successful", token: await userCreated.generateToken(), userId: userCreated._id.toString(),})
     } catch(error){
-        res
+        res 
             .status(400)
             .send({msg:`Page not working ${error}`})
     }
