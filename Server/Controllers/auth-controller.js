@@ -1,5 +1,5 @@
 const User = require("../Models/user-model")
-// const bcrypt = require ("bcryptjs")
+const bcrypt = require ("bcryptjs")
 
 const home = async (req,res)=>{
     try{
@@ -34,15 +34,25 @@ const register = async (req,res)=>{
 
 const login = async (req,res)=>{
     try{
-        console.log(req.body)
-        res
-            .status(200)
-            // .send("his is login page")
-            .json({msg: req.body})
+        const {password, email} = req.body
+        const userExist = await User.findOne({email:email})
+        if(!userExist){
+            return res.status(400).json({msg: "Invalid credentials"})
+        }
+        const user = await bcrypt.compare(password, userExist.password)
+        if(user){
+            res.status(200).json({
+                msg: "login successful",
+                token: await userExist.generateToken(),
+                userId: userExist._id.toString()
+            })
+        }else{
+            res.status(401).json({msg: "Invalid mail or password"})
+        }
     } catch(error){
         res
-            .status(400)
-            .send({msg:`Page not working ${error}`})
+            .status(500)
+            .send({msg:`Internal Server Error ${error}`})
     }
 }
 
