@@ -3,19 +3,13 @@ const express = require("express");
 const app = express();
 const router = require('./Router/auth-router')
 const connectDB = require('./utils/db')
+const errorMiddleware  = require("./MiddleWares/error-middleware")
 
 app.use(express.json())
 
 // Mount te Router: to use the router in your main express app, you can "mount" it at a specific url prefix
 app.use("/api/auth", router);
-
-// app.get('/', (req,res) =>{
-//     res.status(200).send("This is Ekta's File")
-// });
-
-// app.get('/register',(req,res)=>{
-//     res.send("This is registration page")
-// })
+app.use(errorMiddleware)
 
 const PORT = 5000;
 
