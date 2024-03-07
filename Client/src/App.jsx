@@ -6,6 +6,7 @@ import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
 import { Service } from "./pages/Service";
 import { Navbar } from "./components/Navbar";
+import {Footer}  from "./components/Footer";
 
 
 const App = () =>{
@@ -20,6 +21,7 @@ const App = () =>{
         <Route path="/login" element = {<Login/>}/>
         <Route path="/service" element = {<Service/>}/>
       </Routes>
+      <Footer/>
     </BrowserRouter>
   )
 }

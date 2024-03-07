@@ -31,7 +31,7 @@ export const Register = ()=>{
                     <div className="container grid grid-two-cols">
                         <div className="registration-image">
                             <img
-                                src = ""
+                                src = "/images/register.png"
                                 alt = "A girl is registring herself"
                                 width= "500"
                                 height= "500"
